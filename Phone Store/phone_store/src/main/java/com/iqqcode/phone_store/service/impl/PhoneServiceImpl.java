@@ -2,21 +2,22 @@ package com.iqqcode.phone_store.service.impl;
 
 import com.iqqcode.phone_store.entity.PhoneCategory;
 import com.iqqcode.phone_store.entity.PhoneInfo;
+import com.iqqcode.phone_store.entity.PhoneSpecs;
 import com.iqqcode.phone_store.repository.PhoneCategoryRepository;
 import com.iqqcode.phone_store.repository.PhoneInfoRepository;
 import com.iqqcode.phone_store.repository.PhoneSpecsRepository;
 import com.iqqcode.phone_store.service.PhoneService;
 import com.iqqcode.phone_store.util.PhoneUtil;
-import com.iqqcode.phone_store.vo.DataVO;
-import com.iqqcode.phone_store.vo.PhoneCategoryVO;
-import com.iqqcode.phone_store.vo.PhoneInfoVO;
+import com.iqqcode.phone_store.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -100,6 +101,52 @@ public class PhoneServiceImpl implements PhoneService {
                         e.getPhoneIcon()
                 )).collect(Collectors.toList());
         return phoneInfos;
+    }
+
+    /**
+     * 通过手机编号查找手机规格
+     * @param phoneId
+     * @return Specs
+     */
+    @Override
+    public SpecsPackageVO findSpecsByPhoneId(Integer phoneId) {
+        PhoneInfo phoneInfo = phoneInfoRepository.findById(phoneId).get();
+        List<PhoneSpecs> phoneSpecsList = phoneSpecsRepository.findAllByPhoneId(phoneId);
+        SpecsPackageVO specsPackageVO = new SpecsPackageVO();
+        //goods
+        Map<String,String> goods = new HashMap<>();
+        goods.put("picture",phoneInfo.getPhoneIcon());
+        specsPackageVO.setGoods(goods);
+        //sku
+        SkuVO skuVO = new SkuVO();
+        // // tree
+        TreeVO treeVO = new TreeVO();
+        List<PhoneSpecsVO> phoneSpecsVOList = new ArrayList<>();
+        List<PhoneSpecsCasVO> phoneSpecsCasVOList = new ArrayList<> ();
+        PhoneSpecsVO phoneSpecsVO;
+        PhoneSpecsCasVO phoneSpecsCasVO;
+        for (PhoneSpecs phoneSpecs : phoneSpecsList) {
+            phoneSpecsVO = new PhoneSpecsVO();
+            phoneSpecsCasVO = new PhoneSpecsCasVO();
+            BeanUtils.copyProperties(phoneSpecs,phoneSpecsVO);
+            BeanUtils.copyProperties(phoneSpecs,phoneSpecsCasVO);
+            phoneSpecsVOList.add(phoneSpecsVO);
+            phoneSpecsCasVOList.add(phoneSpecsCasVO);
+        }
+        treeVO.setV(phoneSpecsVOList);
+        List<TreeVO> treeVOList = new ArrayList<>();
+        treeVOList.add(treeVO);
+        skuVO.setTree(treeVOList);
+
+        // // list
+        skuVO.setList(phoneSpecsCasVOList);
+        // // price
+        Integer price = phoneInfo.getPhonePrice().intValue();
+        skuVO.setPrice(price + ".00");
+        // // stock_num
+        skuVO.setStock_num(phoneInfo.getPhoneStock());
+        specsPackageVO.setSku(skuVO);
+        return specsPackageVO;
     }
 
     @Override

@@ -46,7 +46,7 @@ GET  /phone/index
 
 
 
-## 2. 根据类型查询收集
+## 2. 根据类型查询手机
 
 ```
 GET /phone/findByCategoryType
@@ -154,7 +154,9 @@ phoneId: 1
 }
 ```
 
+<img src="Document.assets/image-20200801203116956.png" alt="image-20200801203116956" style="zoom:80%;" />
 
+<img src="Document.assets/image-20200801203229838.png" alt="image-20200801203229838" style="zoom:80%;" />
 
 ## 4. 查询地址
 

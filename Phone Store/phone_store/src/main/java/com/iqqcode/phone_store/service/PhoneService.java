@@ -2,6 +2,7 @@ package com.iqqcode.phone_store.service;
 
 import com.iqqcode.phone_store.vo.DataVO;
 import com.iqqcode.phone_store.vo.PhoneInfoVO;
+import com.iqqcode.phone_store.vo.SpecsPackageVO;
 
 import java.util.List;
 
@@ -23,6 +24,6 @@ public interface PhoneService {
      * @return
      */
     List<PhoneInfoVO> findPhoneInfoVOByCategoryType(Integer categoryType);
-    //SpecsPackageVO findSpecsByPhoneId(Integer phoneId);
+    SpecsPackageVO findSpecsByPhoneId(Integer phoneId);
     void SubStock(Integer specsId,Integer quantity);
 }

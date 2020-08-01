@@ -3,6 +3,7 @@ package com.iqqcode.phone_store.service.impl;
 import com.iqqcode.phone_store.service.PhoneService;
 import com.iqqcode.phone_store.vo.DataVO;
 import com.iqqcode.phone_store.vo.PhoneInfoVO;
+import com.iqqcode.phone_store.vo.SpecsPackageVO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +29,12 @@ public class PhoneServiceImplTest {
     @Test
     public void findPhoneInfoVOByCategoryType() {
         List<PhoneInfoVO> list = phoneService.findPhoneInfoVOByCategoryType(2);
+        int id = 0;
+    }
+
+    @Test
+    public void findSku() {
+        SpecsPackageVO specsPackageVO = phoneService.findSpecsByPhoneId(1);
         int id = 0;
     }
 }
