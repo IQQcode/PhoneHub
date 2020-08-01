@@ -24,6 +24,18 @@ public interface PhoneService {
      * @return
      */
     List<PhoneInfoVO> findPhoneInfoVOByCategoryType(Integer categoryType);
+
+    /**
+     * 通过手机编号查找手机规格
+     * @param phoneId
+     * @return data
+     */
     SpecsPackageVO findSpecsByPhoneId(Integer phoneId);
-    void SubStock(Integer specsId,Integer quantity);
+
+    /**
+     * 库存变化
+     * @param specsId
+     * @param quantity
+     */
+    void subStock(Integer specsId,Integer quantity);
 }

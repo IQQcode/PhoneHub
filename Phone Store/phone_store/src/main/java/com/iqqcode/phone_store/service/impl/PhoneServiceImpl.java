@@ -3,6 +3,8 @@ package com.iqqcode.phone_store.service.impl;
 import com.iqqcode.phone_store.entity.PhoneCategory;
 import com.iqqcode.phone_store.entity.PhoneInfo;
 import com.iqqcode.phone_store.entity.PhoneSpecs;
+import com.iqqcode.phone_store.enums.ResultEnum;
+import com.iqqcode.phone_store.exception.PhoneException;
 import com.iqqcode.phone_store.repository.PhoneCategoryRepository;
 import com.iqqcode.phone_store.repository.PhoneInfoRepository;
 import com.iqqcode.phone_store.repository.PhoneSpecsRepository;
@@ -14,6 +16,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.PrinterException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -149,8 +152,29 @@ public class PhoneServiceImpl implements PhoneService {
         return specsPackageVO;
     }
 
+    /**
+     * 库存变化
+     * @param specsId
+     * @param quantity
+     */
     @Override
-    public void SubStock(Integer specsId, Integer quantity) {
+    public void subStock(Integer specsId, Integer quantity) {
+        PhoneSpecs phoneSpecs = phoneSpecsRepository.findById(specsId).get();
+        PhoneInfo phoneInfo = phoneInfoRepository.findById(phoneSpecs.getPhoneId()).get();
+        Integer result = phoneSpecs.getSpecsStock() - quantity;
+        if(result < 0) {
+            log.error("【扣库存】库存不足...");
+            throw new PhoneException(ResultEnum.PHONE_STOCK_ERROR);
+        }
+        phoneSpecs.setSpecsStock(result);
+        phoneSpecsRepository.save(phoneSpecs);
 
+        result = phoneInfo.getPhoneStock() - quantity;
+        if(result < 0) {
+            log.error("【扣库存】库存不足...");
+            throw new PhoneException(ResultEnum.PHONE_STOCK_ERROR);
+        }
+        phoneInfo.setPhoneStock(result);
+        phoneInfoRepository.save(phoneInfo);
     }
 }

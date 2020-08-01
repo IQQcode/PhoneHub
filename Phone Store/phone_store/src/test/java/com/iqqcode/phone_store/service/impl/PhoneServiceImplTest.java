@@ -37,4 +37,9 @@ public class PhoneServiceImplTest {
         SpecsPackageVO specsPackageVO = phoneService.findSpecsByPhoneId(1);
         int id = 0;
     }
+
+    @Test
+    public void subStock() {
+        phoneService.subStock(1, 2);
+    }
 }
