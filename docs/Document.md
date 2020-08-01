@@ -1,0 +1,365 @@
+##  1. 首页数据 
+
+**url**
+
+```
+GET  /phone/index
+```
+
+参数
+
+```
+无
+```
+
+返回
+
+```json
+{
+  code: 0,
+  msg: "成功"，
+  data: {
+    categories: [
+      {
+        name: "极光蓝"，
+        type: 1
+      }
+    ],
+    phones: [
+      id: 1,
+      title: "Honno 8A",
+      price: "2800.00",
+      desc: "极光蓝",
+      tag: [
+        {
+          name: "720P珍珠屏"
+        },
+        {
+          name: "Micro USB接口"
+        }
+      ],
+      thumb: "../static/1a2b8e30-6e98-405f-9a18-9cd31ff96c35.jpg"
+    ]
+  }
+}
+```
+
+
+
+## 2. 根据类型查询收集
+
+```
+GET /phone/findByCategoryType
+```
+
+参数
+
+```
+categoryType: 1
+```
+
+返回
+
+```json
+{
+  code: 0,
+  msg: "成功"，
+  data: [
+    {
+      id: 1,
+      title: "Honno 8A",
+      price: "2800.00",
+      desc: "极光蓝",
+      tag: [
+        {
+          name: "720P珍珠屏"
+        },
+        {
+          name: "Micro USB接口"
+        }
+      ],
+      thumb: "../static/1a2b8e30-6e98-405f-9a18-9cd31ff96c35.jpg"
+    }
+  ]
+}
+```
+
+
+
+
+
+
+
+## 3. 查询手机规格
+
+```
+GET /phone/findSpecsPhoneId
+```
+
+参数
+
+```
+phoneId: 1
+```
+
+返回
+
+```json
+{
+  code: 0,
+  msg: "成功"，
+  data: {
+    goods: {
+      picture: "../static/1a2b8e30-6e98-405f-9a18-9cd31ff96c35.jpg"
+    },
+    sku: {
+      tree: [
+        {
+          k: "规格",
+          v: [
+            {
+              id: 1,
+              name: "32GB",
+              imgUrl: "../static/1a2b8e30-6e98-405f-9a18-9cd31ff96c35.jpg",
+              previewImgUrl: "../static/1a2b8e30-6e98-405f-9a18-9cd31ff96c35.jpg"
+            },
+            {
+            id: 2,
+            name: "64GB",
+            imgUrl: "../static/1a2b8e30-6e98-405f-9a18-9cd31ff96c35.jpg",
+            previewImgUrl: "../static/1a2b8e30-6e98-405f-9a18-9cd31ff96c35.jpg"
+            }
+          ],
+          k_s: "s1"
+        }
+      ],
+      list: [
+        {
+          s1: 1,
+          price: 280000,
+          stock_num: 1
+        },
+        {
+          s1: 2,
+          price: 320000,
+          stock_num: 1
+        }
+      ],
+      price: "2800.00",
+      stock_num: 2,
+      none_sku: false,
+      hide_stock: false
+    }
+  }
+}
+```
+
+
+
+## 4. 查询地址
+
+```
+GET /address/list
+```
+
+参数
+
+```
+无
+```
+
+返回
+
+```json
+{
+  code: 0,
+  msg: "成功"，
+  data: [
+    {
+      areaCode: "440303",
+      id: 21,
+      name: "iqqcode",
+      tel: "13678789632",
+      address: "陕西省西安市临潼区123号"
+    }
+  ]
+}
+```
+
+
+
+
+
+
+
+## 5. 新增地址
+
+```
+POST /address/create
+```
+
+参数
+
+```json
+{
+  name: "iqqcode",
+  tel: "13678789632",
+  country: "",
+  province: "陕西省",
+  city: "西安市",
+  country: "临潼区",
+  areaCode: "710048",
+  postalCode: "",
+  addressDetail: "123号路",
+  isDefault: false
+}
+```
+
+返回
+
+```json
+{
+  code: 0,
+  msg: "成功",
+  data: null
+}
+```
+
+
+
+
+
+
+
+
+
+## 6. 修改地址
+
+```
+PUT /address/update
+```
+
+参数
+
+```json
+{
+  id: 27
+  name: "iqqcode"
+  tel: "13678789632"
+  addressDetail: "123号路"
+  areaCode: "710048"
+  province: "陕西省"
+  city: "西安市"
+  country: "临潼区"
+}
+```
+
+返回
+
+```json
+{
+  code: 0,
+  msg: "成功",
+  data: null
+}
+```
+
+
+
+## 7. 创建订单
+
+```
+POST /order/create
+```
+
+参数
+
+```json
+{
+  name: "iqqcode"
+  tel: "13678789632"
+  address: "陕西省西安市临潼区123号"
+  specsId: 1
+  quantity: 1
+}
+```
+
+返回
+
+```json
+{
+  code: 0,
+  msg: "成功",
+  data: {
+    orderId: "1586242977480760998"
+  }
+}
+```
+
+
+
+
+
+
+
+## 8. 订单详情
+
+```
+GET /order/detail
+```
+
+参数
+
+```
+orderId: "1586242977480760998"
+```
+
+返回
+
+```json
+{
+  code: 0,
+  msg: "成功",
+  data:{
+    orderId: "1586242977480760998",
+    buyerName: "iqqcode",
+    phoneName: "Honor 8A",
+    payStatus: 0,
+    freight: 10,
+    tel: "13636363636",
+    address: "陕西省西安市临潼区123号",
+    num: 1,
+    specs: "32GB",
+    price: "2800.00",
+    icon: "../static/e84a2e03-7f19-41d2-98a5-a5c16b7e252d.jpg",
+    amount: 2800
+  }
+}
+```
+
+
+
+## 9. 支付订单
+
+```
+PUT /order/pay
+```
+
+参数
+
+```
+orderId: "1586242977480760998"
+```
+
+返回
+
+```json
+{
+  code: 0,
+  msg: "成功",
+  data: "1586242977480760998"
+}
+```
+
+
+
