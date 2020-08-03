@@ -79,6 +79,7 @@
     created(){
       const _this = this
       axios.get('http://localhost:8181/phone/index').then(function (resp) {
+        console.log(resp)
         _this.phones = resp.data.data.phones
         _this.categories = resp.data.data.categories
       })

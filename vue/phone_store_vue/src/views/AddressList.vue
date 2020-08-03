@@ -42,6 +42,7 @@
                     specsId: this.$store.state.specsId,
                     quantity: this.$store.state.quantity
                 }
+                console.log(orderForm)
                 const _this = this
                 axios.post('http://localhost:8181/order/create',orderForm).then(function (resp) {
                     if(resp.data.code == 0){

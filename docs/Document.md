@@ -245,14 +245,14 @@ PUT /address/update
 
 ```json
 {
-  id: 27
-  name: "iqqcode"
-  tel: "13678789632"
-  addressDetail: "123号路"
-  areaCode: "710048"
-  province: "陕西省"
-  city: "西安市"
-  country: "临潼区"
+  "id": 38,
+  "name": "王五",
+  "tel": "15849488888",
+  "addressDetail": "江汉路189号",
+  "areaCode": "01100",
+  "province": "北京市",
+  "city": "北京市",
+  "country": "朝阳区"
 }
 ```
 
@@ -268,7 +268,7 @@ PUT /address/update
 
 
 
-## 7. 创建订单
+## 7. 新增订单
 
 ```
 POST /order/create

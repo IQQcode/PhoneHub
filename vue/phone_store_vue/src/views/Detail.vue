@@ -39,7 +39,7 @@
         </van-cell-group>
 
         <van-submit-bar
-                :price="data.amount*100+data.freight*100"
+                :price="data.amount*100"
                 button-text="确认付款"
                 @submit="onSubmit"
         />
