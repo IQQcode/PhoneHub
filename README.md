@@ -22,7 +22,11 @@ less安装命令
 cnpm install less less-loader --save
 ```
 
+快速启动
 
+```shell
+npm run serve
+```
 
 
 
@@ -32,8 +36,12 @@ cnpm install less less-loader --save
 
 
 
-
-
 ## 数据库
 
 **MySQL**
+
+
+
+## 接口测试文档
+
+- 👉[https://www.showdoc.com.cn/phonehub?page_id=5192907384572712](https://www.showdoc.com.cn/phonehub?page_id=5192907384572712)
