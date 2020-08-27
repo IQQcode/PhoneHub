@@ -1,0 +1,14 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: CroissantOne-Regular
+font link: https://fonts.google.com/specimen/Croissant+One
+font author: Eduardo Tunni
+font author site: http://www.tipo.net.ar/
+Slogan Font: SpaceMono-Regular.ttf
+
+icon designer: Carlos Valério
+icon designer link: /born2tastetheSun
+        
+{"bg":"transparent","icon-gradient-0":"#8E36DE","icon-gradient-1":"#F7CFF5","font":"#000000","slogan":"#141414"}
+      
