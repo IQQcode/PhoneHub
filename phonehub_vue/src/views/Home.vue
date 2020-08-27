@@ -1,6 +1,6 @@
 <template>
+  <!--手机Tag属性-->
   <div>
-
     <van-row>
       <van-col span="24">
         <van-tabs @click="onClick" sticky title-active-color="#E32DAB" color="#E32DAB" :line-width="100" :line-height="2">
@@ -26,6 +26,7 @@
       </van-col>
     </van-row>
 
+    <!--顶部Tag标签切换-->
     <van-sku
             v-model="show"
             :sku="sku"
@@ -100,6 +101,7 @@
         })
       },
       onBuyClicked(item){
+        console.log(item)
         this.$store.state.specsId = item.selectedSkuComb.s1
         this.$store.state.quantity = item.selectedNum
         this.$router.push('/addressList')
