@@ -26,6 +26,9 @@ public class PhoneInfoRepositoryTest {
         }
     }
 
+    /**
+     * 查询该规格的所有手机
+     */
     @Test
     public void findAllByCategoryType() {
         List<PhoneInfo> list = repository.findAllByCategoryType(1);

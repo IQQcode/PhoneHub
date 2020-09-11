@@ -25,8 +25,12 @@ public class PhoneCategoryRepositoryTest {
         }
     }
 
+    /**
+     * 根据手机类型查询
+     */
     @Test
     public void findByCategoryType() {
+        //查询1号类型的手机
         PhoneCategory byCategoryType = repository.findByCategoryType(1);
         System.out.println(byCategoryType);
     }

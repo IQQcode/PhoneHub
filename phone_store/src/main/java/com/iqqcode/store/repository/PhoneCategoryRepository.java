@@ -9,5 +9,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @Description:等同于dao层，自动解析SQL
  */
 public interface PhoneCategoryRepository extends JpaRepository<PhoneCategory,Integer> {
+    /**
+     * 根据规格型号查询手机
+     * @param categoryType
+     * @return
+     */
     PhoneCategory findByCategoryType(Integer categoryType);
 }

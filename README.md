@@ -1,4 +1,4 @@
-# PhoneHub
+# honeHub
 
 <p align="center">
 <img src = "./media/cover.png"  width="100%"  height="100% alt="coan"  title="coan" />
@@ -17,6 +17,16 @@
 PhoneHub汇聚了手机的分类信息，直观的信息对比，新机预购，便捷的选购流程，让你的购机之旅便捷而满意。
 
 **项目文档📚：[https://iqqcodes.gitee.io/coan](https://iqqcodes.gitee.io/coan)**
+
+【📺部分功能实现展示】
+
+<p align="center">
+<img src = "./media/fun1.png"  width="100%"  height="100% alt="coan"  title="coan" />
+</p>
+
+<p align="center">
+<img src = "./media/fun2.png"  width="100%"  height="100% alt="coan"  title="coan" />
+</p>
 
 ## 功能实现
 

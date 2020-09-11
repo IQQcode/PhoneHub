@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2020-08-02 19:05
  * @Description:首页视图
  */
-@RestController
+@RestController //返回Json数据
 @RequestMapping("/phone")
 public class PhoneHandler {
     @Autowired

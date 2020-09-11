@@ -19,7 +19,7 @@ public class PhoneInfoVO {
     private Integer phoneId;
 
     @JsonProperty("title")
-    private String phoneName;
+        private String phoneName;
 
     @JsonProperty("price")
     private String phonePrice;
